@@ -20,10 +20,10 @@ for method in methods:
 			dataset = pickle.load(open('./dataset/nl_0_K_'+str(k)+'_RD_'+str(radius)+'.pic', 'rb'))[0]
 			for noise_level in Noise_level:
 				print('\t\t\tnoise level = %d'%(noise_level))
-				
+
 				R = dataset['R']
 				d = dataset['d']
 				# q = dataset['q']
 
 				Q = mlat.monte_carlo_sampler(method, R, d, noise_level)
-				pickle.dump(Q, open('results/samples/MT_'+method+'_K_'+str(k)+'_RD_'+str(rd)+'_nl_'+str(noise_level)+'.pic', 'wb'))
+				pickle.dump(Q, open('results/samples/MT_'+method+'_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'.pic', 'wb'))
