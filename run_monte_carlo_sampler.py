@@ -7,6 +7,7 @@ Radius       	= [10, 20, 30] 		# distance between the reference points and the q
 Noise_level 	= 1+np.arange(10)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
 methods			= ['mlat', 'lin', 'pmlat', 'pml']
+n_runs			= 30
 
 
 
@@ -24,6 +25,7 @@ for method in methods:
 				R = dataset['R']
 				d = dataset['d']
 				# q = dataset['q']
-
-				Q = mlat.monte_carlo_sampler(method, R, d, noise_level)
-				pickle.dump(Q, open('results/samples/MT_'+method+'_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'.pic', 'wb'))
+				for run in np.arange(n_runs):
+					print('\t\t\t\trun = %d'%(r))
+					Q = mlat.monte_carlo_sampler(method, R, d, noise_level)
+					pickle.dump(Q, open('results/samples/MT_'+method+'_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'_r_'+str(r)+'.pic', 'wb'))
