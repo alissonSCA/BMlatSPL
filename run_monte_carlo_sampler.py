@@ -1,14 +1,21 @@
 import numpy as np
 import multilateration as mlat
 import pickle
+import sys
 
 
-Radius       	= [20]#[10, 20, 30] 		# distance between the reference points and the query point
+Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
 Noise_level 	= 1+np.arange(10)	# noise level
-Ks          	= [6]#[3, 6, 10]		# number of reference points
-methods			= ['pmlat']#['mlat', 'lin', 'pmlat', 'pml']
+Ks          	= [3, 6, 10]		# number of reference points
 n_runs			= 30				# number of runs
+methods			= ['mlat', 'lin', 'pmlat', 'pml']
 
+if len(sys.argv) > 1:
+	Ks = [int(sys.argv[1])]
+if len(sys.argv) > 2:
+	Radius = [int(sys.argv[2])]
+if len(sys.argv) > 3:
+	methods = [sys.argv[3]]
 
 
 
