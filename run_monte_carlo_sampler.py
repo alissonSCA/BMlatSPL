@@ -6,7 +6,7 @@ import pickle
 Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
 Noise_level 	= 1+np.arange(10)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
-methods			= ['mlat', 'lin', 'pmlat', 'pml']
+methods			= ['pmlat', 'pml']#['mlat', 'lin', 'pmlat', 'pml']
 n_runs			= 30
 
 
