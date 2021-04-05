@@ -80,14 +80,13 @@ def monte_carlo_sampler(method, R, d, noise_level, n_samples=1000):
 	K, dim = R.shape
 	Q = np.zeros([n_samples, dim])
 	for i in np.arange(n_samples):
-		R2 = R + np.random.normal(0, noise_level,size=[K,2])
+		R2 = R + np.random.normal(0, noise_level,size=[K, dim])
 		Q[i,:] = f(R2, d)
 	return Q
 
-class ProbabilisticMultilateration:
+class BayesianMultilateration:
 
 	def __init__(self, file='./stan/multilateration_nakagami.pic'):
-		#self.sm = pystan.StanModel(file=file)
 		self.sm = pickle.load(open(file, 'rb'))
 
 	def sampling(self, R, d, theta=200, sigma=1, max_treedepth=10, adapt_delta=0.8):
