@@ -26,12 +26,11 @@ for method in methods:
 		for radius in Radius:
 			print('\t\tradius = %d'%(radius))
 			dataset = pickle.load(open('./dataset/nl_0_K_'+str(k)+'_RD_'+str(radius)+'.pic', 'rb'))[0]
+			R = dataset['R']
+			d = dataset['d']
 			for noise_level in Noise_level:
 				print('\t\t\tnoise level = %d'%(noise_level))
 
-				R = dataset['R']
-				d = dataset['d']
-				# q = dataset['q']
 				for r in np.arange(n_runs):
 					print('\t\t\t\trun = %d'%(r))
 					Q = mlat.monte_carlo_sampler(method, R, d, noise_level)

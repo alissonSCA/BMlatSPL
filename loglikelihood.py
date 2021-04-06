@@ -48,4 +48,3 @@ for k in Ks:
 
 		df = pd.DataFrame(loglike)
 		df.to_csv('./results/loglikelihood/loglike'+'_K_'+str(k)+'_RD_'+str(radius)+'.csv')
-		# pickle.dump(loglike, open('./results/loglikelihood/loglike'+'_K_'+str(k)+'_RD_'+str(radius)+'.pic', 'wb'))

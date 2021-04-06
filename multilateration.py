@@ -95,6 +95,7 @@ class BayesianMultilateration:
 		fit = self.sm.sampling(data=data, iter=1000, chains=4, control=dict(max_treedepth=max_treedepth, adapt_delta=adapt_delta))
 		params = fit.extract()
 
+		self.params = params
 		self.Q = params['q']
 		self.R = R
 		self.d = d

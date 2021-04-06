@@ -4,7 +4,7 @@ import pickle
 
 
 Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
-Noise_level 	= 1+np.arange(10)	# noise level
+Noise_level 	= 2+np.arange(9)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
 n_runs			= 30				# number of runs
 
@@ -22,5 +22,5 @@ for k in Ks:
 			for r in np.arange(n_runs):
 				print('\t\t\trun = %d'%(r))
 
-				model.sampling(R, d, sigma=noise_level, theta=100, max_treedepth=12, adapt_delta=0.9)
+				model.sampling(R, d, sigma=noise_level, theta=30, max_treedepth=12, adapt_delta=0.9)
 				pickle.dump(model.Q, open('results/samples/MT_BMlat_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'_r_'+str(r)+'.pic', 'wb'))

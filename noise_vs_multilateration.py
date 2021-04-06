@@ -11,7 +11,7 @@ Radius       = [10, 20, 30] #maximum distance the sensor could read
 Noise_level = 1+np.arange(10)
 Ks          = [3, 6, 10]
 
-model = mlat.ProbabilisticMultilateration()
+model = mlat.BayesianMultilateration()
 for radius in Radius:	
 	for K in Ks:
 		error = np.zeros([10, 6])
