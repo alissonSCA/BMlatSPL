@@ -5,7 +5,7 @@ import os
 Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
 Noise_level 	= 2+np.arange(9)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
-methods			= ['pmlat', 'lin', 'mlat', 'pml', 'BMlat']
+methods			= ['MAPMLAT', 'LMLAT', 'MLAT', 'PMLAT', 'BMLAT']
 n_runs			= 30				# number of runs
 
 for method in methods:
@@ -34,7 +34,7 @@ for method in methods:
 						change = True
 						Q = Q[nan_values==0,:]				
 
-					x = Q > 1000
+					x = Q > 10000
 					p_inf_values = np.sum(x, axis=1)
 					n_p_inf = np.sum(p_inf_values)
 					print('\t\t\t\t+inf = %d'%(n_p_inf))
@@ -42,7 +42,7 @@ for method in methods:
 						change = True
 						Q = Q[p_inf_values==0,:]				
 
-					x = Q < -1000
+					x = Q < -10000
 					m_inf_values = np.sum(x, axis=1)
 					n_m_inf = np.sum(m_inf_values)
 					print('\t\t\t\t-inf = %d'%(n_m_inf))

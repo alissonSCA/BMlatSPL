@@ -68,13 +68,13 @@ def p_multilateration(r, d, q0=None, alpha = 0.01, max_iter=100):
 	return np.array([q])	  	
 
 def monte_carlo_sampler(method, R, d, noise_level, n_samples=1000):
-	if method == 'mlat':
+	if method == 'MLAT':
 		f = lambda R,d: multilateration(R,d)
-	elif method == 'lin':
+	elif method == 'LMLAT':
 		f = lambda R,d: lin_multilateration(R,d)
-	elif method == 'pmlat':
+	elif method == 'MAPMLAT':
 		f = lambda R,d: p_multilateration(R,d)
-	elif method == 'pml':
+	elif method == 'PMLAT':
 		f = lambda R,d: PML(R,d)
 
 	K, dim = R.shape
@@ -118,9 +118,3 @@ class BayesianMultilateration:
 			prior = multivariate_normal.pdf(self.Q[i,:], mean=np.mean(self.R, axis=0), cov=100*np.eye(dim))
 			p[i] = prior*self.likelihood(self.d, self.Q[i,:], self.R, theta=self.theta)
 		return self.Q[np.argmax(p), :].reshape(1,-1)   	    
-
-	def get_loglikelihood(self, q):
-		mu = np.mean(self.Q, axis=0)
-		S  = np.cov(self.Q.T)
-
-		return multivariate_normal.logpdf(q, mu, S)

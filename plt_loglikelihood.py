@@ -5,7 +5,7 @@ import seaborn as sns
 sns.set_theme(style="dark")
 
 Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
-Noise_level 	= 1+np.arange(10)	# noise level
+Noise_level 	= 2+np.arange(9)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
 methods			= ['pmlat', 'lin', 'mlat', 'pml', 'BMlat']
 
@@ -27,10 +27,10 @@ for k in Ks:
 		    hue="method",
 		    kind="line"
 		)	
-		for i, method in enumerate(methods):
-			print(method)
-			print(loglike['likelihood'][i*9 + 9])
-			print(loglike['method'][i*9 + 9])
-			print('--------')
+		# for i, method in enumerate(methods):
+		# 	print(method)
+		# 	print(loglike['likelihood'][i*9 + 9])
+		# 	print(loglike['method'][i*9 + 9])
+		# 	print('--------')
 
 		plt.show()			

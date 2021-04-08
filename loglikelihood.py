@@ -10,7 +10,7 @@ import pickle
 Radius       	= [10, 20, 30] 		# distance between the reference points and the query point
 Noise_level 	= 2+np.arange(9)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
-methods			= ['pmlat', 'lin', 'mlat', 'pml', 'BMlat']
+methods			= ['MAPMLAT', 'LMLAT', 'MLAT', 'PMLAT', 'BMLAT']
 n_runs			= 30				# number of runs
 
 for k in Ks:
@@ -47,4 +47,4 @@ for k in Ks:
 		loglike['run']			= r
 
 		df = pd.DataFrame(loglike)
-		df.to_csv('./results/loglikelihood/loglike'+'_K_'+str(k)+'_RD_'+str(radius)+'.csv')
+		df.to_csv('./results/likelihood/likelihood'+'_K_'+str(k)+'_RD_'+str(radius)+'.csv')

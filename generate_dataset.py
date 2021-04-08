@@ -5,7 +5,7 @@ import pickle
 
 # Setup params
 Radius       = [10, 20, 30] 		# distance between reference points and query point
-Noise_level  = np.linspace(0,10,11) # noise level
+Noise_level  = np.linspace(2,10,10) # noise level
 Ks           = [3, 6, 10]			# number of reference points
 N            = 30 					# number of datasets
 
