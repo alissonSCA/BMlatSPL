@@ -23,4 +23,4 @@ for k in Ks:
 				print('\t\t\trun = %d'%(r))
 
 				model.sampling(R, d, sigma=noise_level, theta=30, max_treedepth=12, adapt_delta=0.9)
-				pickle.dump(model.Q, open('results/samples/MT_BMlat_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'_r_'+str(r)+'.pic', 'wb'))
+				pickle.dump(model.Q, open('results/samples/MT_BMLAT_K_'+str(k)+'_RD_'+str(radius)+'_nl_'+str(noise_level)+'_r_'+str(r)+'.pic', 'wb'))
