@@ -8,7 +8,7 @@ Radius       	= [10, 20, 30] 		# distance between the reference points and the q
 Noise_level 	= 1+np.arange(10)	# noise level
 Ks          	= [3, 6, 10]		# number of reference points
 n_runs			= 30				# number of runs
-methods			= ['mlat', 'lin', 'pmlat', 'pml']
+methods			= ['MAPMLAT', 'LMLAT', 'MLAT', 'PMLAT']
 
 if len(sys.argv) > 1:
 	Ks = [int(sys.argv[1])]
