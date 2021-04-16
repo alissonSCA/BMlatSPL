@@ -86,7 +86,7 @@ def monte_carlo_sampler(method, R, d, noise_level, n_samples=1000):
 
 class BayesianMultilateration:
 
-	def __init__(self, file='./stan/multilateration_nakagami.pic'):
+	def __init__(self, file='./stan/multilateration_nakagami_hiperpriors.pic'):
 		self.sm = pickle.load(open(file, 'rb'))
 
 	def sampling(self, R, d, theta=200, sigma=1, max_treedepth=10, adapt_delta=0.8):

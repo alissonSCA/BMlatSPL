@@ -22,12 +22,12 @@ for k in Ks:
 		# ax.set_yscale("log")
 
 		# Load the example planets dataset
-		dt = loglike[loglike['noise_level'] > 2]
+		dt = loglike[loglike['noise_level'] > 3]
 
 		# Plot the orbital period with horizontal boxes
-		sns.boxplot(x="noise_level", y="likelihood", data=dt, hue='method',
-		            whis=[0, 100], width=.6, palette="vlag")
-		# sns.pointplot(x="noise_level", y="likelihood", data=dt, hue='method', ci='sd', markers='.')
+		# sns.boxplot(x="noise_level", y="likelihood", data=dt, hue='method',
+		#             whis=[0, 100], width=.6, palette="vlag")
+		sns.pointplot(x="noise_level", y="likelihood", data=dt, hue='method', ci='sd', markers='.', palette="colorblind")
 
 		# # Add in points to show each observation
 		# sns.stripplot(x="noise_level", y="likelihood", data=dt, hue='method',
@@ -38,4 +38,7 @@ for k in Ks:
 		ax.set(ylabel="Likelihood", xlabel='noise level', title="k=%d, radius=%d"%(k, radius))
 		sns.despine(trim=True, left=True)
 		
+		handles, labels = ax.get_legend_handles_labels()
+		ax.legend(handles=handles, labels=['MMLAT', 'LMLAT', 'MLAT', 'PMLAT', 'BMLAT'], title="")
+
 		plt.savefig('./figures/likelihood/likelihood'+'_K_'+str(k)+'_RD_'+str(radius)+'.png')		
